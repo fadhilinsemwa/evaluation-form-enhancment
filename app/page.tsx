@@ -1,3 +1,5 @@
+'use client';
+
 import { useState } from 'react';
 import { ChevronLeft, ChevronRight, Frown, Meh, Smile, Star } from 'lucide-react';
 
@@ -33,7 +35,7 @@ const ratings = [
   { value: 5, label: 'Excellent', icon: Star, color: 'text-teal-500', bgColor: 'bg-teal-50', borderColor: 'border-teal-300', hoverColor: 'hover:bg-teal-100' },
 ];
 
-function App() {
+export default function Home() {
   const [currentStep, setCurrentStep] = useState(0);
   const [answers, setAnswers] = useState<Record<number, number>>({});
   const [isSubmitted, setIsSubmitted] = useState(false);
@@ -105,7 +107,6 @@ function App() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 flex items-center justify-center p-4">
       <div className="w-full max-w-3xl">
-        {/* Header Card */}
         <div className="bg-white rounded-2xl shadow-lg mb-6 p-6 md:p-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
             <div>
@@ -118,7 +119,6 @@ function App() {
             </div>
           </div>
 
-          {/* Progress Bar */}
           <div className="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
             <div
               className="h-full bg-gradient-to-r from-teal-500 to-teal-600 transition-all duration-500 ease-out rounded-full"
@@ -127,13 +127,11 @@ function App() {
           </div>
         </div>
 
-        {/* Question Card */}
         <div className="bg-white rounded-2xl shadow-lg p-6 md:p-10">
           <h2 className="text-xl md:text-2xl font-semibold text-slate-800 mb-8 md:mb-12 text-center leading-relaxed">
             {currentQuestion.text}
           </h2>
 
-          {/* Rating Options */}
           <div className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4 mb-8">
             {ratings.map((rating) => {
               const Icon = rating.icon;
@@ -174,7 +172,6 @@ function App() {
             })}
           </div>
 
-          {/* Navigation */}
           <div className="flex items-center justify-between pt-6 border-t border-slate-100">
             <button
               onClick={handlePrevious}
@@ -225,7 +222,6 @@ function App() {
           </div>
         </div>
 
-        {/* Helper Text */}
         <div className="text-center mt-6 text-sm text-slate-500">
           Press a rating to automatically continue to the next question
         </div>
@@ -233,5 +229,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
